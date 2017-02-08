@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
+  <display-name>APP</display-name>
+  <welcome-file-list>
+    <welcome-file>Pages/Home</welcome-file>
+  </welcome-file-list>
+  <env-entry>
+    <env-entry-name>url</env-entry-name>
+    <env-entry-type>java.lang.String</env-entry-type>
+    <env-entry-value>jdbc:mysql://localhost:3306/BANK-APP?useSSL=false</env-entry-value>
+  </env-entry>
+  <env-entry>
+    <env-entry-name>driver</env-entry-name>
+    <env-entry-type>java.lang.String</env-entry-type>
+    <env-entry-value>com.mysql.jdbc.Driver</env-entry-value>
+  </env-entry>
+  <env-entry>
+    <env-entry-name>username</env-entry-name>
+    <env-entry-type>java.lang.String</env-entry-type>
+    <env-entry-value>root</env-entry-value>
+  </env-entry>
+  <env-entry>
+    <env-entry-name>password</env-entry-name>
+    <env-entry-type>java.lang.String</env-entry-type>
+    <env-entry-value>seem</env-entry-value>
+  </env-entry>
+  <env-entry>
+    <env-entry-name>baseUrl</env-entry-name>
+    <env-entry-type>java.lang.String</env-entry-type>
+    <env-entry-value>http://localhost:8080/BANK-APP/</env-entry-value>
+  </env-entry>
+  <env-entry>
+    <env-entry-name>supportedBanks</env-entry-name>
+    <env-entry-type>java.lang.String</env-entry-type>
+    <env-entry-value>GCB:ECOBANK:BARCLAYS:HFC</env-entry-value>
+  </env-entry>
+  <env-entry>
+    <env-entry-name>profilePicturesFolder</env-entry-name>
+    <env-entry-type>java.lang.String</env-entry-type>
+    <env-entry-value>/Users/user/Documents/JAVAEE/BANK-APP/WebContent/images/profile-pictures/</env-entry-value>
+  </env-entry>
+  <env-entry>
+    <env-entry-name>twilioAccountSID</env-entry-name>
+    <env-entry-type>java.lang.String</env-entry-type>
+    <env-entry-value>AC893a476bb6e0057d2c6a7ea88a30a628</env-entry-value>
+  </env-entry>
+  <env-entry>
+    <env-entry-name>twilioAuthToken</env-entry-name>
+    <env-entry-type>java.lang.String</env-entry-type>
+    <env-entry-value>05b38e72615a2e0a2e9f413e758673d9</env-entry-value>
+  </env-entry>
+  <servlet>
+    <servlet-name>Jersey REST Service</servlet-name>
+    <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
+    <init-param>
+      <param-name>jersey.config.server.provider.packages</param-name>
+      <param-value>com.asimadu.webservices</param-value>
+    </init-param>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Jersey REST Service</servlet-name>
+    <url-pattern>/rest/*</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>Jersey REST Custom Service</servlet-name>
+    <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
+    <init-param>
+      <param-name>jersey.config.server.provider.packages</param-name>
+      <param-value>com.asimadu.webservices</param-value>
+    </init-param>
+    <load-on-startup>2</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Jersey REST Custom Service</servlet-name>
+    <url-pattern>/custom-rest/*</url-pattern>
+  </servlet-mapping>
+  <filter>
+    <filter-name>AuthenFilter</filter-name>
+    <filter-class>com.asimadu.filters.AuthenFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>AuthenFilter</filter-name>
+    <url-pattern>/Pages/Home</url-pattern>
+  </filter-mapping>
+</web-app>
