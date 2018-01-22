@@ -1,2 +1,2 @@
 # E-TRAN-PROJECT
-Hosts my ongoing JEE project
+A project (dummy) for online transfers between bank and mobile accouts.
